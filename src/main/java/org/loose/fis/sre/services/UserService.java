@@ -3,6 +3,8 @@ package org.loose.fis.sre.services;
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
 import org.loose.fis.sre.exceptions.UsernameAlreadyExistsException;
+import org.loose.fis.sre.exceptions.WrongPasswordException;
+import org.loose.fis.sre.exceptions.WrongUsernameException;
 import org.loose.fis.sre.model.User;
 
 import java.nio.charset.StandardCharsets;
@@ -34,6 +36,21 @@ public class UserService {
             if (Objects.equals(username, user.getUsername()))
                 throw new UsernameAlreadyExistsException(username);
         }
+    }
+
+    public static void checkUser(String username,String password) throws WrongUsernameException, WrongPasswordException {
+        int ok=0;
+        for(User user: userRepository.find()){
+            if(Objects.equals(username,user.getUsername())){
+                ok=1;
+                if(Objects.equals(encodePassword(username,password),user.getPassword()))
+                    ok=2;
+            }
+        }
+        if(ok==0)
+            throw new WrongUsernameException();
+        if(ok==1)
+            throw new WrongPasswordException();
     }
 
     private static String encodePassword(String salt, String password) {
