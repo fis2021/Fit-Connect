@@ -21,7 +21,7 @@ public class LoginController {
     private PasswordField passwordField;
     @FXML
     private TextField usernameField;
-    @FXML
+
     public void handleLoginAction() {
         if(usernameField.getText()==null||usernameField.getText().isEmpty()){
             loginMessage.setText("Campul username este gol!");

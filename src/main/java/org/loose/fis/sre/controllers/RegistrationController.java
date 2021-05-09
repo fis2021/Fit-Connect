@@ -19,12 +19,12 @@ public class RegistrationController {
     @FXML
     private ChoiceBox role;
 
-    @FXML
+
     public void initialize() {
         role.getItems().addAll("Sportiv", "Sala de sport");
     }
 
-    @FXML
+
     public void handleRegisterAction() {
         try {
             UserService.addUser(usernameField.getText(), passwordField.getText(), (String) role.getValue());
