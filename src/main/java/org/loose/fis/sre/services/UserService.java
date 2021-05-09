@@ -2,7 +2,10 @@ package org.loose.fis.sre.services;
 
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
+import org.loose.fis.sre.exceptions.AccountCrdentialsException;
 import org.loose.fis.sre.exceptions.UsernameAlreadyExistsException;
+import org.loose.fis.sre.exceptions.WrongPasswordException;
+import org.loose.fis.sre.exceptions.WrongUsernameException;
 import org.loose.fis.sre.model.User;
 
 import java.nio.charset.StandardCharsets;
@@ -35,6 +38,21 @@ public class UserService {
                 throw new UsernameAlreadyExistsException(username);
         }
     }
+
+
+    public static String getUserRole(String username, String password) throws AccountCrdentialsException {
+        for (User user : userRepository.find()) {
+            if (Objects.equals(username, user.getUsername()))
+            {
+                if (Objects.equals(encodePassword(username,password), user.getPassword()))
+                    return user.getRole();
+                else
+                    throw new WrongPasswordException(password);
+            }
+        }
+        throw new WrongUsernameException(username);
+    }
+
 
     private static String encodePassword(String salt, String password) {
         MessageDigest md = getMessageDigest();
