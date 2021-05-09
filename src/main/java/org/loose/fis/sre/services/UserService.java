@@ -2,6 +2,7 @@ package org.loose.fis.sre.services;
 
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
+import org.loose.fis.sre.exceptions.AccountCrdentialsException;
 import org.loose.fis.sre.exceptions.UsernameAlreadyExistsException;
 import org.loose.fis.sre.exceptions.WrongPasswordException;
 import org.loose.fis.sre.exceptions.WrongUsernameException;
@@ -38,20 +39,20 @@ public class UserService {
         }
     }
 
-    public static void checkUser(String username,String password) throws WrongUsernameException, WrongPasswordException {
-        int ok=0;
-        for(User user: userRepository.find()){
-            if(Objects.equals(username,user.getUsername())){
-                ok=1;
-                if(Objects.equals(encodePassword(username,password),user.getPassword()))
-                    ok=2;
+
+    public static String getUserRole(String username, String password) throws AccountCrdentialsException {
+        for (User user : userRepository.find()) {
+            if (Objects.equals(username, user.getUsername()))
+            {
+                if (Objects.equals(encodePassword(username,password), user.getPassword()))
+                    return user.getRole();
+                else
+                    throw new WrongPasswordException(password);
             }
         }
-        if(ok==0)
-            throw new WrongUsernameException();
-        if(ok==1)
-            throw new WrongPasswordException();
+        throw new WrongUsernameException(username);
     }
+
 
     private static String encodePassword(String salt, String password) {
         MessageDigest md = getMessageDigest();
