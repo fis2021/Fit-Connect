@@ -17,9 +17,9 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         initDirectory();
         UserService.initDatabase();
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("fxml/login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("fxml/homepage.fxml"));
         primaryStage.setTitle("Fit-Connect");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.setScene(new Scene(root, 800, 600));
         primaryStage.show();
     }
 
