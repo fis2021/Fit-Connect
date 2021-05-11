@@ -10,10 +10,12 @@ import org.loose.fis.sre.services.UserService;
 public class ViewFitnessRoomController {
     @FXML
     private ListView<String> list = new ListView <String> ();
-
     ObservableList<String> fitnessRooms = FXCollections.observableArrayList(UserService.users("Sala de sport"));
     public void set(){
         list.setItems(fitnessRooms);
+    }
+
+    public void handleSelect() throws Exception{
 
     }
 }

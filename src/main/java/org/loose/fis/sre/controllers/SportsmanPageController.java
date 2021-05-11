@@ -1,6 +1,3 @@
-<<<<<<< Updated upstream
-package org.loose.fis.sre.controllers;public class SportsmanPageController {
-=======
 package org.loose.fis.sre.controllers;
 
 import javafx.fxml.FXML;
@@ -9,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+
 
 public class SportsmanPageController {
     @FXML
@@ -22,11 +20,7 @@ public class SportsmanPageController {
         stage.setScene(new Scene(root, 800,600));
     }
 
-
     public void handleViewFitnessRoomAction() throws Exception{
-        //Stage stage = (Stage) viewFitnessRoom.getScene().getWindow();
-        //Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("fxml/viewFitnessRoomList.fxml"));
-        //stage.setScene(new Scene(root, 800,600));
         FXMLLoader loader=new FXMLLoader();
         loader.setLocation(getClass().getClassLoader().getResource("fxml/viewFitnessRoomList.fxml"));
         Parent parent = loader.load();
@@ -37,5 +31,4 @@ public class SportsmanPageController {
         stage.setScene(scene);
         stage.show();
     }
->>>>>>> Stashed changes
 }

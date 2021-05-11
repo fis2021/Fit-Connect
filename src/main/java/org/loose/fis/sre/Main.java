@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.loose.fis.sre.services.AntrenamentService;
 import org.loose.fis.sre.services.FileSystemService;
 import org.loose.fis.sre.services.UserService;
 
@@ -17,6 +18,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         initDirectory();
         UserService.initDatabase();
+        AntrenamentService.initDatabase();
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("fxml/login.fxml"));
         primaryStage.setTitle("Fit-Connect");
         primaryStage.setScene(new Scene(root, 300, 275));

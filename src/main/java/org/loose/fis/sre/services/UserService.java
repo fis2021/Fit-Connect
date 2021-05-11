@@ -57,7 +57,7 @@ public class UserService {
     public static ArrayList<String> users(String role) {
         ArrayList<String> list = new ArrayList<String>();
         for(User user : userRepository.find()) {
-            if(Objects.equals(role,user.getRole()))
+            if(Objects.equals(role,user.getRole()) && user.getName()!=null)
                 list.add(user.getName());
         }
         return list;
