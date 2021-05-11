@@ -13,6 +13,8 @@ public class RegistrationController {
     @FXML
     private Text registrationMessage;
     @FXML
+    private TextField nameField;
+    @FXML
     private PasswordField passwordField;
     @FXML
     private TextField usernameField;
@@ -27,7 +29,7 @@ public class RegistrationController {
     @FXML
     public void handleRegisterAction() {
         try {
-            UserService.addUser(usernameField.getText(), passwordField.getText(), (String) role.getValue());
+            UserService.addUser(nameField.getText(),usernameField.getText(), passwordField.getText(), (String) role.getValue());
             registrationMessage.setText("Contul a fost creat cu succes!");
         } catch (UsernameAlreadyExistsException e) {
             registrationMessage.setText(e.getMessage());

@@ -11,6 +11,7 @@ import org.loose.fis.sre.model.User;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.Objects;
 
 import static org.loose.fis.sre.services.FileSystemService.getPathToFile;
@@ -27,9 +28,9 @@ public class UserService {
         userRepository = database.getRepository(User.class);
     }
 
-    public static void addUser(String username, String password, String role) throws UsernameAlreadyExistsException {
+    public static void addUser(String name,String username, String password, String role) throws UsernameAlreadyExistsException {
         checkUserDoesNotAlreadyExist(username);
-        userRepository.insert(new User(username, encodePassword(username, password), role));
+        userRepository.insert(new User(name,username, encodePassword(username, password), role));
     }
 
     private static void checkUserDoesNotAlreadyExist(String username) throws UsernameAlreadyExistsException {
@@ -53,6 +54,14 @@ public class UserService {
         throw new WrongUsernameException(username);
     }
 
+    public static ArrayList<String> users(String role) {
+        ArrayList<String> list = new ArrayList<String>();
+        for(User user : userRepository.find()) {
+            if(Objects.equals(role,user.getRole()))
+                list.add(user.getName());
+        }
+        return list;
+    }
 
     private static String encodePassword(String salt, String password) {
         MessageDigest md = getMessageDigest();
