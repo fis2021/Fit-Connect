@@ -29,12 +29,12 @@ public class RegistrationController {
     @FXML
     private Text backMessage;
 
-    @FXML
+
     public void initialize() {
         role.getItems().addAll("Sportiv", "Sala de sport");
     }
 
-    @FXML
+
     public void handleRegisterAction() {
         try {
             UserService.addUser(nameField.getText(),usernameField.getText(), passwordField.getText(), (String) role.getValue());
