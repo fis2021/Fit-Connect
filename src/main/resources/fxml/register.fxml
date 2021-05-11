@@ -42,7 +42,7 @@
     </HBox>
 
     <Text fx:id="backMessage" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
-    <HBox alignment="bottom_left" spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="5">
+    <HBox alignment="bottom_left" spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="6">
         <Button onAction="#handleBackAction" text="Back"/>
     </HBox>
 </GridPane>
