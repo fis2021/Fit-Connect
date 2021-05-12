@@ -26,6 +26,7 @@
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
+       <Text id="title-text" text="Adauga o clasa de antrenament" GridPane.columnIndex="1" GridPane.columnSpan="2" />
       <TextField fx:id="fitnessRoomNameField" GridPane.columnIndex="2" GridPane.rowIndex="1" />
       <TextField fx:id="priceField" GridPane.columnIndex="2" GridPane.rowIndex="5" />
       <TextField fx:id="nameField" GridPane.columnIndex="2" GridPane.rowIndex="2" />
@@ -37,6 +38,9 @@
       <Label text="Interval orar:" GridPane.columnIndex="1" GridPane.rowIndex="4" />
       <Label text="Pret:" GridPane.columnIndex="1" GridPane.rowIndex="5" />
       <Button onAction="#handleAddButton" text="Adauga" GridPane.columnIndex="3" GridPane.rowIndex="6" />
-      <Text fx:id="addMessage" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="211.2000060081482" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+       <Text fx:id="addMessage" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="211.2000060081482" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+
+       <Text fx:id="backMessage" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
+       <Button onAction="#handleBackFitnessRoomPageAction" text="Back" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
    </children>
 </GridPane>
