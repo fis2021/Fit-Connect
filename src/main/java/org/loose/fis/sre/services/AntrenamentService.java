@@ -82,11 +82,17 @@ public class AntrenamentService {
         }
     }
 
-    private static void checkAntrenamentDoesNotAlreadyExist(String name) throws AntrenamentAlreadyExistsException {
+   public static void checkAntrenamentDoesNotAlreadyExist(String name) throws AntrenamentAlreadyExistsException {
         for (Antrenament antrenament : antrenamentRepository.find()) {
             if (Objects.equals(name, antrenament.getName()))
                 throw new AntrenamentAlreadyExistsException(name);
         }
+    }
+
+    public static void deleteAntrenament(String fitnessRoomName, String name,String antrenor, String timeSlot,int price) throws EmptyTextfieldsException, AntrenamentAlreadyExistsException {
+        checkEmptyTextfieldsForEdit(fitnessRoomName,name,antrenor,timeSlot,price);
+        checkAntrenamentDoesNotAlreadyExist(name);
+        antrenamentRepository.remove(eq("fitnessRoomName",fitnessRoomName));
     }
 
     public static ArrayList<Antrenament> antrenaments(String fitnessRoomName){
