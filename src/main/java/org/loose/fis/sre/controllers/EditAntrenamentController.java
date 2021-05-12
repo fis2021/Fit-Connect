@@ -8,11 +8,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.loose.fis.sre.exceptions.AntrenamentAlreadyExistsException;
+import org.loose.fis.sre.exceptions.EmptyTextfieldsException;
+import org.loose.fis.sre.exceptions.NameAndAntrenorExistsException;
 import org.loose.fis.sre.services.AntrenamentService;
 
 import java.io.IOException;
 
-public class AddAntrenamentController {
+public class EditAntrenamentController {
     @FXML
     private TextField fitnessRoomNameField;
     @FXML
@@ -24,19 +26,20 @@ public class AddAntrenamentController {
     @FXML
     private TextField priceField;
     @FXML
-    private Text addMessage;
+    private Text editMessage;
     @FXML
     private Text backMessage;
 
     @FXML
-    private void handleAddButton() throws AntrenamentAlreadyExistsException{
-        try{
-            AntrenamentService.addAntrenament(fitnessRoomNameField.getText(),nameField.getText(),antrenorField.getText(),timeField.getText(),Integer.parseInt(priceField.getText()));
-            addMessage.setText("Clasa de antrenament adaugata cu succes!");
-        }
-        catch (AntrenamentAlreadyExistsException e){
-            addMessage.setText(e.getMessage());
-        }
+    private void handleEditButton() throws EmptyTextfieldsException, NameAndAntrenorExistsException, AntrenamentAlreadyExistsException {
+        try {
+            AntrenamentService.editAntrenament(fitnessRoomNameField.getText(),nameField.getText(),antrenorField.getText(),timeField.getText(),Integer.parseInt(priceField.getText()));
+            editMessage.setText("Clasa de antrenament editata cu succes!");
+        } catch (EmptyTextfieldsException e){
+            editMessage.setText(e.getMessage);
+        } //catch (NameAndAntrenorExistsException e){
+            //editMessage.setText(e.getMessage);
+       // }
     }
 
     @FXML
