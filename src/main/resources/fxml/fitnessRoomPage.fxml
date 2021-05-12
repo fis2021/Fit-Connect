@@ -20,6 +20,6 @@
     <children>
         <Button fx:id="addAntrenament" onAction="#handleAddAntrenamentAction" text="Adaugă clasă de antrenament" GridPane.columnIndex="1" />
         <Button fx:id="editAntrenament" onAction="#handleEditAntrenamentAction" text="Editează clasă de antrenament" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-        <Button mnemonicParsing="false" text="Șterge clasă de atrenament" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        <Button fx:id="deleteAntrenament" onAction="#handleDeleteAntrenamentAction" text="Șterge clasă de atrenament" GridPane.columnIndex="1" GridPane.rowIndex="2" />
     </children>
 </GridPane>
