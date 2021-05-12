@@ -18,7 +18,15 @@ public class User {
         this.password = password;
         this.role = role;
     }
+    private String selectedFitnessRoom;
 
+    public String getSelectedFitnessRoom() {
+        return selectedFitnessRoom;
+    }
+
+    public void setSelectedFitnessRoom(String selectedFitnessRoom) {
+        this.selectedFitnessRoom = selectedFitnessRoom;
+    }
     public User() {
     }
 

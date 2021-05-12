@@ -72,5 +72,14 @@ public class Antrenament {
     public int hashCode() {
         return Objects.hash(fitnessRoomName, name, antrenor, timeSlot, price);
     }
+
+    @Override
+    public String toString() {
+        return fitnessRoomName +
+                ", name='" + name  +
+                ", antrenor='" + antrenor +
+                ", timeSlot='" + timeSlot +
+                ", price=" + price;
+    }
 }
 
