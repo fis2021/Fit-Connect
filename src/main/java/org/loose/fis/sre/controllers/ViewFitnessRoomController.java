@@ -17,6 +17,8 @@ public class ViewFitnessRoomController {
     private ListView<String> list = new ListView <String> ();
     @FXML
     private Button select;
+    @FXML
+    private Button back;
 
     ObservableList<String> fitnessRooms = FXCollections.observableArrayList(UserService.users("Sala de sport"));
     public void set(){
@@ -35,5 +37,10 @@ public class ViewFitnessRoomController {
         stage.setScene(scene);
         stage.show();
 
+    }
+    public void handleBackButton() throws Exception{
+        Stage stage = (Stage) back.getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("fxml/sportsmanPage.fxml"));
+        stage.setScene(new Scene(root, 800,600));
     }
 }
