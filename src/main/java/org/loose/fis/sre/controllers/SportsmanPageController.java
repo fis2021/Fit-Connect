@@ -16,7 +16,7 @@ public class SportsmanPageController {
 
     public void handleLogOutButtonAction() throws Exception{
         Stage stage = (Stage) logOut.getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("fxml/login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("fxml/homepage.fxml"));
         stage.setScene(new Scene(root, 800,600));
     }
 
