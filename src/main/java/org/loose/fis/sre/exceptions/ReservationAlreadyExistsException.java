@@ -6,7 +6,7 @@ public class ReservationAlreadyExistsException extends Exception{
     private final Antrenament antrenament=new Antrenament();
 
     public ReservationAlreadyExistsException(Antrenament antrenament) {
-        super(String.format("O clasa de antrenament cu numele %s exista deja!", antrenament.getName()));
+        super(String.format("Ati reservat deja o clasa de antrenament cu numele %s!", antrenament.getName()));
     }
 
     public Antrenament getAntrenament() {

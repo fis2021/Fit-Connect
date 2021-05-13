@@ -8,16 +8,21 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.loose.fis.sre.exceptions.ReservationAlreadyExistsException;
 import org.loose.fis.sre.model.Antrenament;
 import org.loose.fis.sre.model.User;
 import org.loose.fis.sre.services.AntrenamentService;
+import org.loose.fis.sre.services.ReservationService;
 
 public class ViewAntrenamentController {
     @FXML
     private ListView<Antrenament> list=new ListView<>();
     @FXML
     private Button back;
+    @FXML
+    private Text reservation;
 
 
     private User user=new User();
@@ -39,7 +44,15 @@ public class ViewAntrenamentController {
         stage.show();
     }
 
-    public void handleReservationButton(){
 
+    public void handleReservationButton() throws ReservationAlreadyExistsException {
+        Antrenament selected=list.getSelectionModel().getSelectedItem();
+        if(selected!=null)
+            try {
+                ReservationService.addReservation(user,selected);
+                reservation.setText("Ati rezervat clasa de antrenament!");
+            } catch (ReservationAlreadyExistsException e) {
+                reservation.setText(e.getMessage());
+            }
     }
 }
