@@ -5,11 +5,11 @@ import org.dizitart.no2.objects.ObjectRepository;
 import org.loose.fis.sre.exceptions.AntrenamentAlreadyExistsException;
 import org.loose.fis.sre.exceptions.EmptyTextfieldsException;
 import org.loose.fis.sre.model.Antrenament;
-import static org.dizitart.no2.objects.filters.ObjectFilters.eq;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
+import static org.dizitart.no2.objects.filters.ObjectFilters.eq;
 import static org.loose.fis.sre.services.FileSystemService.getPathToFile;
 
 public class AntrenamentService {
@@ -91,7 +91,6 @@ public class AntrenamentService {
 
     public static void deleteAntrenament(String fitnessRoomName, String name,String antrenor, String timeSlot,int price) throws EmptyTextfieldsException, AntrenamentAlreadyExistsException {
         checkEmptyTextfieldsForEdit(fitnessRoomName,name,antrenor,timeSlot,price);
-        checkAntrenamentDoesNotAlreadyExist(name);
         antrenamentRepository.remove(eq("fitnessRoomName",fitnessRoomName));
     }
 

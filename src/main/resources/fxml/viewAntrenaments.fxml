@@ -27,7 +27,7 @@
    <children>
       <ListView fx:id="list" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="5" GridPane.rowIndex="1" GridPane.rowSpan="2" />
       <Button fx:id="back" mnemonicParsing="false" onAction="#handleBackButton" text="Back" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-        <Button onAction="#handleReservationButton" text="Reserva" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+        <Button onAction="#handleReservationButton" text="Rezerva" GridPane.columnIndex="5" GridPane.rowIndex="3" />
       <Text fx:id="reservation" strokeType="OUTSIDE"  GridPane.columnIndex="2" GridPane.columnSpan="4" GridPane.rowIndex="4" />
    </children>
 </GridPane>
