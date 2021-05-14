@@ -62,6 +62,15 @@ public class User {
         this.role = role;
     }
 
+    private static String currentUser;
+
+    public static String getCurrentUser() {
+        return currentUser;
+    }
+    public static void setCurrentUser(String user){
+        currentUser=user;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

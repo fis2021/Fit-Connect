@@ -17,6 +17,8 @@ public class FitnessRoomPageController {
     private Button deleteAntrenament;
     @FXML
     private Button logout;
+    @FXML
+    private Button viewReservations;
 
     @FXML
     private void handleAddAntrenamentAction() throws Exception{
@@ -44,5 +46,18 @@ public class FitnessRoomPageController {
         Stage stage = (Stage) logout.getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("fxml/homepage.fxml"));
         stage.setScene(new Scene(root, 800,600));
+    }
+
+    @FXML
+    private void handleViewReservationsAction() throws Exception{
+        FXMLLoader loader=new FXMLLoader();
+        loader.setLocation(getClass().getClassLoader().getResource("fxml/viewAllBookings.fxml"));
+        Parent parent = loader.load();
+        Scene scene = new Scene(parent);
+        ViewAllBookingsController controller = loader.getController();
+        controller.initialize();
+        Stage stage = (Stage) (viewReservations.getScene().getWindow());
+        stage.setScene(scene);
+        stage.show();
     }
 }
