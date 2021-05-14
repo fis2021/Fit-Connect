@@ -9,6 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.loose.fis.sre.exceptions.AccountCrdentialsException;
+import org.loose.fis.sre.model.User;
 
 import java.io.IOException;
 
@@ -34,6 +35,7 @@ public class LoginController {
         else{
             Stage primary = (Stage) loginMessage.getScene().getWindow();
             try{
+                User.setCurrentUser(usernameField.getText());
                 String role=getUserRole(usernameField.getText(),passwordField.getText());
                 if(role.equals("Sportiv")) {
                     Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("fxml/sportsmanPage.fxml"));

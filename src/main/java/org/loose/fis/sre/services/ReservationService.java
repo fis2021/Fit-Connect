@@ -36,10 +36,11 @@ public class ReservationService {
         }
     }
 
-    public ArrayList<Reservation> reservations(){
+    public static ArrayList<Reservation> reservations(String fitnessRoomName){
         ArrayList<Reservation> list = new ArrayList<>();
         for(Reservation reservation : reservationRepository.find()) {
-            list.add(reservation);
+            if(fitnessRoomName.equals(reservation.getAntrenament().getFitnessRoomName()))
+                list.add(reservation);
         }
         return list;
     }

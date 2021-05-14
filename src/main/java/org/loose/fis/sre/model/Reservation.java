@@ -42,4 +42,12 @@ public class Reservation {
     public int hashCode() {
         return Objects.hash(sportsMan, antrenament);
     }
+
+    @Override
+    public String toString() {
+        return "Reservation{" +
+                "sportsMan=" + sportsMan +
+                ", antrenament=" + antrenament +
+                '}';
+    }
 }
