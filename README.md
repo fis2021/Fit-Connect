@@ -3,7 +3,7 @@ This is a JavaFX application that aims both gymaholics and gyms' representatives
 
 * [Java 15 or 16](https://www.oracle.com/java/technologies/javase-downloads.html)
 * [JavaFX](https://openjfx.io/openjfx-docs/) (as GUI)
-* [Maven](https://maven.apache.org/) / [Gradle](https://gradle.org/) (as build tools)
+* [Maven](https://maven.apache.org/) (as build tools)
 * [Nitrite Java](https://www.dizitart.org/nitrite-database.html) (as Database)
 
 ## Prerequisites
@@ -52,19 +52,19 @@ The project has already been setup for Maven according to the above link.
 To start and run the project use the following command:
 * `mvn javafx:run` or `./mvnw javafx:run` (run the `run` goal of the `javafx` maven plugin)
 
-To understand better how to set up a project using JavaFX 11+ and [Maven](https://openjfx.io/openjfx-docs/#maven) / [Gradle](https://openjfx.io/openjfx-docs/#gradle), please check the [official OpenJFX documentation](https://openjfx.io/).
+To understand better how to set up a project using JavaFX 11+ and [Maven](https://openjfx.io/openjfx-docs/#maven), please check the [official OpenJFX documentation](https://openjfx.io/).
 
 You should see an application starting, that looks like this:
 
-<img src="images/Running.png" width="250"/>
+<img src="resources/images/Running.png" width="250"/>
 
 Try and register a user, for example Gigel, with the gigel username and gigel password. It will tell you, the user was registered successfully.
 
-<img src="images/Registered.png" width="250"/>
+<img src="resources/images/Registered.png" width="250"/>
 
 However, if you try to register a user with the same username again, you will see an error message:
 
-<img src="images/AccountExists.png" width="250"/>
+<img src="resources/images/AccountExists.png" width="250"/>
 
 **Make sure to close the Fit-Connect app before trying to access the database, because the database only accepts one connection at a time!**
 
@@ -75,7 +75,7 @@ Behind the scenes, the app actually saved the **gigel** user in the database, en
 Download the jar and run `java --module-path $PATH_TO_FX --add-modules javafx.controls nitrite-explorer-3.4.3.jar
 `. You should see a window like this open:
 
-<img src="images/NitriteExplorer.png" width="250"/>
+<img src="resources/images/NitriteExplorer.png" width="250"/>
 
 Choose the `$HOME/.fit-connect/fit-connect.db` and add `test` as both the username, and the password to access the database, then click `Open`.
 
