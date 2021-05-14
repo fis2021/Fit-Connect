@@ -12,9 +12,9 @@ To check your java version, please run `java -version` in the command line.
 
 To install a newer version of Java, you can go to [Oracle](https://www.oracle.com/java/technologies/javase-downloads.html) or [OpenJDK](https://jdk.java.net/).
 
-It would be good if you also installed Maven and / or Gradle to your system. To check if you have Maven or Gradle installed run `mvn -version` or `gradle -version`.
+It would be good if you also installed Maven to your system. To check if you have Maven installed run `mvn -version`.
 
-If you need to install any of them, please refer to this [Maven tutorial](https://www.baeldung.com/install-maven-on-windows-linux-mac) and the [official Gradle docs](https://docs.gradle.org/current/userguide/installation.html).
+If you need to install it, please refer to this [Maven tutorial](https://www.baeldung.com/install-maven-on-windows-linux-mac).
 
 Make sure you install JavaFX SDK on your machine, using the instructions provided in the [Official Documentation](https://openjfx.io/openjfx-docs/#install-javafx). Make sure to export the `PATH_TO_FX` environment variable, or to replace it in every command you will find in this documentation from now on, with the `path/to/javafx-sdk-15.0.1/lib`.
 
@@ -43,7 +43,7 @@ mvnw.cmd clean install (for Windows)
 ```
 
 ### Open in IntelliJ IDEA
-To open the project in IntelliJ idea, you have to import it as either a Maven, or a Gradle project, depending on what you prefer.
+To open the project in IntelliJ IDEA, you have to import it as a Maven project.
 After you import it, in order to be able to run it, you need to set up your IDE according to the [official documentation](https://openjfx.io/openjfx-docs/). Please read the section for `Non-Modular Projects from IDE`.
 If you managed to follow all the steps from the tutorial, you should also be able to start the application by pressing the run key to the left of the Main class.
 
@@ -56,15 +56,15 @@ To understand better how to set up a project using JavaFX 11+ and [Maven](https:
 
 You should see an application starting, that looks like this:
 
-<img src="E:/sem2/FIS/Fit-Connect/src/main/resources/images/Running.png" width="250"/>
+<img src="images/Running.png" width="250"/>
 
 Try and register a user, for example Gigel, with the gigel username and gigel password. It will tell you, the user was registered successfully.
 
-<img src="E:/sem2/FIS/Fit-Connect/src/main/resources/images/Registered.png" width="250"/>
+<img src="images/Registered.png" width="250"/>
 
 However, if you try to register a user with the same username again, you will see an error message:
 
-<img src="E:/sem2/FIS/Fit-Connect/src/main/resources/images/AccountExists.png" width="250"/>
+<img src="images/AccountExists.png" width="250"/>
 
 **Make sure to close the Fit-Connect app before trying to access the database, because the database only accepts one connection at a time!**
 
@@ -75,7 +75,7 @@ Behind the scenes, the app actually saved the **gigel** user in the database, en
 Download the jar and run `java --module-path $PATH_TO_FX --add-modules javafx.controls nitrite-explorer-3.4.3.jar
 `. You should see a window like this open:
 
-<img src="E:/sem2/FIS/Fit-Connect/src/main/resources/images/NitriteExplorer.png" width="250"/>
+<img src="images/NitriteExplorer.png" width="250"/>
 
 Choose the `$HOME/.fit-connect/fit-connect.db` and add `test` as both the username, and the password to access the database, then click `Open`.
 
