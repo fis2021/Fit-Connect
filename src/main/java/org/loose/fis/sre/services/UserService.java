@@ -91,5 +91,13 @@ public class UserService {
         }
         return null;
     }
+
+    public static User getUser (String username) {
+        for (User user : userRepository.find()){
+            if(username.equals(user.getUsername()))
+                return user;
+        }
+        return null;
+    }
 }
 

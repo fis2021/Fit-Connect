@@ -13,6 +13,8 @@ public class SportsmanPageController {
     private Button logOut;
     @FXML
     private Button viewFitnessRoom;
+    @FXML
+    private Button viewMyReservations;
 
     public void handleLogOutButtonAction() throws Exception{
         Stage stage = (Stage) logOut.getScene().getWindow();
@@ -28,6 +30,18 @@ public class SportsmanPageController {
         ViewFitnessRoomController controller = loader.getController();
         controller.set();
         Stage stage = (Stage) (viewFitnessRoom.getScene().getWindow());
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void handleViewMyBookingsAction () throws Exception{
+        FXMLLoader loader=new FXMLLoader();
+        loader.setLocation(getClass().getClassLoader().getResource("fxml/viewMyBookings.fxml"));
+        Parent parent = loader.load();
+        Scene scene = new Scene(parent);
+        ViewMyBookingsController controller = loader.getController();
+        controller.initialize();
+        Stage stage = (Stage) (viewMyReservations.getScene().getWindow());
         stage.setScene(scene);
         stage.show();
     }
