@@ -15,6 +15,7 @@ import org.loose.fis.sre.model.Antrenament;
 import org.loose.fis.sre.model.User;
 import org.loose.fis.sre.services.AntrenamentService;
 import org.loose.fis.sre.services.ReservationService;
+import org.loose.fis.sre.services.UserService;
 
 public class ViewAntrenamentController {
     @FXML
@@ -44,15 +45,13 @@ public class ViewAntrenamentController {
         stage.show();
     }
 
-
     public void handleReservationButton() throws ReservationAlreadyExistsException {
         Antrenament selected=list.getSelectionModel().getSelectedItem();
-        if(selected!=null)
-            try {
-                ReservationService.addReservation(user,selected);
-                reservation.setText("Ati rezervat clasa de antrenament!");
-            } catch (ReservationAlreadyExistsException e) {
-                reservation.setText(e.getMessage());
-            }
+        try {
+            ReservationService.addReservation(UserService.getUser(User.getCurrentUser()),selected);
+            reservation.setText("Ati rezervat clasa de antrenament!");
+        } catch (ReservationAlreadyExistsException e) {
+            reservation.setText(e.getMessage());
+        }
     }
 }

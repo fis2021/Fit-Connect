@@ -44,4 +44,13 @@ public class ReservationService {
         }
         return list;
     }
+
+    public static ArrayList<Reservation> myReservations(String username){
+        ArrayList<Reservation> list = new ArrayList<>();
+        for(Reservation reservation : reservationRepository.find()) {
+            if(username.equals(reservation.getSportsMan().getUsername()))
+                list.add(reservation);
+        }
+        return list;
+    }
 }
