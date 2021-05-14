@@ -13,10 +13,12 @@ import org.loose.fis.sre.model.Reservation;
 import org.loose.fis.sre.model.User;
 import org.loose.fis.sre.services.ReservationService;
 import javafx.scene.control.ListView;
+import org.loose.fis.sre.services.UserService;
+
 import java.io.IOException;
 
 public class ViewAllBookingsController {
-    ObservableList<Reservation> reservations= FXCollections.observableArrayList(ReservationService.reservations(User.getCurrentUser()));
+    ObservableList<Reservation> reservations= FXCollections.observableArrayList(ReservationService.reservations(UserService.getUsername(User.getCurrentUser())));
 
     @FXML
     private Text backMessage;
@@ -28,7 +30,6 @@ public class ViewAllBookingsController {
     public void initialize() throws IOException {
         rezervari.setItems(reservations);
     }
-
 
     @FXML
     public void handleBackFitnessRoomPageAction() throws IOException {

@@ -84,6 +84,12 @@ public class UserService {
         return md;
     }
 
-
+    public static String getUsername (String username) {
+        for (User user : userRepository.find()){
+            if(username.equals(user.getUsername()))
+                return user.getName();
+        }
+        return null;
+    }
 }
 
