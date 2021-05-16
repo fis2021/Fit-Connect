@@ -11,6 +11,8 @@ import org.loose.fis.sre.model.User;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import static org.loose.fis.sre.services.FileSystemService.getPathToFile;
@@ -19,26 +21,27 @@ public class UserService {
 
     private static ObjectRepository<User> userRepository;
 
+    private static Nitrite database;
     public static void initDatabase() {
-        Nitrite database = Nitrite.builder()
+        FileSystemService.initDirectory();
+        database = Nitrite.builder()
                 .filePath(getPathToFile("fit-connect.db").toFile())
                 .openOrCreate("test", "test");
 
         userRepository = database.getRepository(User.class);
     }
 
-    public static void addUser(String username, String password, String role) throws UsernameAlreadyExistsException {
+    public static void addUser(String name,String username, String password, String role) throws UsernameAlreadyExistsException {
         checkUserDoesNotAlreadyExist(username);
-        userRepository.insert(new User(username, encodePassword(username, password), role));
+        userRepository.insert(new User(name,username, encodePassword(username, password), role));
     }
 
-    private static void checkUserDoesNotAlreadyExist(String username) throws UsernameAlreadyExistsException {
+    static void checkUserDoesNotAlreadyExist(String username) throws UsernameAlreadyExistsException {
         for (User user : userRepository.find()) {
             if (Objects.equals(username, user.getUsername()))
                 throw new UsernameAlreadyExistsException(username);
         }
     }
-
 
     public static String getUserRole(String username, String password) throws AccountCrdentialsException {
         for (User user : userRepository.find()) {
@@ -53,8 +56,16 @@ public class UserService {
         throw new WrongUsernameException(username);
     }
 
+    public static ArrayList<String> users(String role) {
+        ArrayList<String> list = new ArrayList<String>();
+        for(User user : userRepository.find()) {
+            if(Objects.equals(role,user.getRole()) && user.getName()!=null)
+                list.add(user.getName());
+        }
+        return list;
+    }
 
-    private static String encodePassword(String salt, String password) {
+    public static String encodePassword(String salt, String password) {
         MessageDigest md = getMessageDigest();
         md.update(salt.getBytes(StandardCharsets.UTF_8));
 
@@ -75,6 +86,29 @@ public class UserService {
         return md;
     }
 
+    public static String getUsername (String username) {
+        for (User user : userRepository.find()){
+            if(username.equals(user.getUsername()))
+                return user.getName();
+        }
+        return null;
+    }
 
+    public static User getUser (String username) {
+        for (User user : userRepository.find()){
+            if(username.equals(user.getUsername()))
+                return user;
+        }
+        return null;
+    }
+
+    public static void close() {
+        userRepository.close();
+        database.close();
+    }
+
+    public static List<User> getAllUsers() {
+        return userRepository.find().toList();
+    }
 }
 
