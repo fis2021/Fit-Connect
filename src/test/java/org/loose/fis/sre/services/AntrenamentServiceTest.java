@@ -34,14 +34,14 @@ class AntrenamentServiceTest {
 
     @Test
     @DisplayName("Baza de date este initializata si nu are nicio clasa de antrenament")
-    void testDatabaseIsInitializedAndNoUserIsPersisted() {
+    void testDatabaseIsInitializedAndNoAntrenamentIsPersisted() {
         assertThat(AntrenamentService.getAllAntrenaments()).isNotNull();
         assertThat(AntrenamentService.getAllAntrenaments()).isEmpty();
     }
 
     @Test
     @DisplayName("Antrenament is successfully persisted to Database")
-    void testUserIsAddedToDatabase() throws AntrenamentAlreadyExistsException {
+    void testAntrenamentIsAddedToDatabase() throws AntrenamentAlreadyExistsException {
         AntrenamentService.addAntrenament(FITNESSROOM_NAME,NAME,ANTRENOR,TIMESLOT,PRICE);
         assertThat(AntrenamentService.getAllAntrenaments()).isNotEmpty();
         assertThat(AntrenamentService.getAllAntrenaments().size()).isEqualTo(1);
@@ -56,7 +56,7 @@ class AntrenamentServiceTest {
 
     @Test
     @DisplayName("Antrenament can not be added twice")
-    void testUserCanNotBeAddedTwice() {
+    void testAntrenamentCanNotBeAddedTwice() {
         assertThrows(AntrenamentAlreadyExistsException.class, () -> {
             AntrenamentService.addAntrenament(FITNESSROOM_NAME,NAME,ANTRENOR,TIMESLOT,PRICE);
             AntrenamentService.addAntrenament(FITNESSROOM_NAME,NAME,ANTRENOR,TIMESLOT,PRICE);
@@ -69,7 +69,7 @@ class AntrenamentServiceTest {
         AntrenamentService.addAntrenament(FITNESSROOM_NAME,NAME,ANTRENOR,TIMESLOT,PRICE);
         assertThrows(AntrenamentAlreadyExistsException.class, () -> AntrenamentService.checkAntrenamentDoesNotAlreadyExist(NAME));
     }
-    
+
 
     @Test
     @DisplayName("Antrenament is successfully edit")

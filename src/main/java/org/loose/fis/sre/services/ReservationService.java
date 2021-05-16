@@ -8,6 +8,7 @@ import org.loose.fis.sre.model.Reservation;
 import org.loose.fis.sre.model.User;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import static org.loose.fis.sre.services.FileSystemService.getPathToFile;
@@ -15,9 +16,10 @@ import static org.loose.fis.sre.services.FileSystemService.getPathToFile;
 public class ReservationService {
 
     private static ObjectRepository<Reservation> reservationRepository;
-
+    private static Nitrite database;
     public static void initDatabase() {
-        Nitrite database = Nitrite.builder()
+        FileSystemService.initDirectory();
+        database = Nitrite.builder()
                 .filePath(getPathToFile("reservation.db").toFile())
                 .openOrCreate("test", "test");
 
@@ -29,7 +31,7 @@ public class ReservationService {
         reservationRepository.insert(new Reservation(sportsMan,antrenament));
     }
 
-    private static void checkReservationDoesNotAlreadyExist(Antrenament antrenament) throws ReservationAlreadyExistsException {
+    public static void checkReservationDoesNotAlreadyExist(Antrenament antrenament) throws ReservationAlreadyExistsException {
         for (Reservation reservation: reservationRepository.find()) {
             if(Objects.equals(antrenament, reservation.getAntrenament()))
                 throw new ReservationAlreadyExistsException(antrenament);
@@ -52,5 +54,14 @@ public class ReservationService {
                 list.add(reservation);
         }
         return list;
+    }
+
+    public static void close() {
+        reservationRepository.close();
+        database.close();
+    }
+
+    public static List<Reservation> getAllReservations() {
+        return reservationRepository.find().toList();
     }
 }
