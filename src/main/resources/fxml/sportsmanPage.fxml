@@ -18,8 +18,8 @@
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-       <Button fx:id="logOut" mnemonicParsing="false" onAction="#handleLogOutButtonAction" text="LogOut" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-       <Button fx:id="viewFitnessRoom" mnemonicParsing="false" onAction="#handleViewFitnessRoomAction" text="Vezi salile" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-       <Button fx:id="viewMyReservations" mnemonicParsing="false" onAction="#handleViewMyBookingsAction" text="Rezervarile mele" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+       <Button fx:id="logOut" id="logout" mnemonicParsing="false" onAction="#handleLogOutButtonAction" text="LogOut" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+       <Button fx:id="viewFitnessRoom" id="viewFitnessRoom" mnemonicParsing="false" onAction="#handleViewFitnessRoomAction" text="Vezi salile" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+       <Button fx:id="viewMyReservations" id="viewMyReservations" mnemonicParsing="false" onAction="#handleViewMyBookingsAction" text="Rezervarile mele" GridPane.columnIndex="1" GridPane.rowIndex="1" />
    </children>
 </GridPane>
