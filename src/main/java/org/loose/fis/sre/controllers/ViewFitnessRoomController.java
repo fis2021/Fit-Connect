@@ -11,6 +11,8 @@ import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import org.loose.fis.sre.services.UserService;
 
+import java.util.List;
+
 
 public class ViewFitnessRoomController {
     @FXML
@@ -42,5 +44,9 @@ public class ViewFitnessRoomController {
         Stage stage = (Stage) back.getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("fxml/sportsmanPage.fxml"));
         stage.setScene(new Scene(root, 800,600));
+    }
+
+    public List<String> getFitnessRooms() {
+        return list.getItems();
     }
 }

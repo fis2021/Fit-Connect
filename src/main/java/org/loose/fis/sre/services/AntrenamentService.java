@@ -7,6 +7,7 @@ import org.loose.fis.sre.exceptions.EmptyTextfieldsException;
 import org.loose.fis.sre.model.Antrenament;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import static org.dizitart.no2.objects.filters.ObjectFilters.eq;
@@ -14,9 +15,10 @@ import static org.loose.fis.sre.services.FileSystemService.getPathToFile;
 
 public class AntrenamentService {
     private static ObjectRepository<Antrenament> antrenamentRepository;
-
+    private static Nitrite database;
     public static void initDatabase() {
-        Nitrite database = Nitrite.builder()
+        FileSystemService.initDirectory();
+        database = Nitrite.builder()
                 .filePath(getPathToFile("Antrenament.db").toFile())
                 .openOrCreate("test", "test");
 
@@ -100,5 +102,14 @@ public class AntrenamentService {
             if(Objects.equals(antrenament.getFitnessRoomName(),fitnessRoomName))
                 antrenaments.add(antrenament);
         return antrenaments;
+    }
+
+    public static void close() {
+        antrenamentRepository.close();
+        database.close();
+    }
+
+    public static List<Antrenament> getAllAntrenaments() {
+        return antrenamentRepository.find().toList();
     }
 }

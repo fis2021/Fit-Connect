@@ -17,6 +17,8 @@ import org.loose.fis.sre.services.AntrenamentService;
 import org.loose.fis.sre.services.ReservationService;
 import org.loose.fis.sre.services.UserService;
 
+import java.util.List;
+
 public class ViewAntrenamentController {
     @FXML
     private ListView<Antrenament> list=new ListView<>();
@@ -53,5 +55,9 @@ public class ViewAntrenamentController {
         } catch (ReservationAlreadyExistsException e) {
             reservation.setText(e.getMessage());
         }
+    }
+
+    public List<Antrenament> getAntrenaments() {
+        return list.getItems();
     }
 }

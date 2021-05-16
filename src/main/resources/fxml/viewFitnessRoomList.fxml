@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane alignment="center" hgap="10" prefHeight="400" prefWidth="600" vgap="10" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.sre.controllers.ViewFitnessRoomController">
+<GridPane id="viewFitnessRooms" alignment="center" hgap="10" prefHeight="400" prefWidth="600" vgap="10" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.sre.controllers.ViewFitnessRoomController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -21,7 +21,7 @@
   </rowConstraints>
    <children>
       <ListView fx:id="list" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="2" />
-       <Button fx:id="select" mnemonicParsing="false" onAction="#handleSelect" text="Select" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-       <Button fx:id="back" mnemonicParsing="false" onAction="#handleBackButton" text="Back" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+       <Button fx:id="select" id="select" mnemonicParsing="false" onAction="#handleSelect" text="Select" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+       <Button fx:id="back" id="back" mnemonicParsing="false" onAction="#handleBackButton" text="Back" GridPane.columnIndex="1" GridPane.rowIndex="3" />
    </children>
 </GridPane>
