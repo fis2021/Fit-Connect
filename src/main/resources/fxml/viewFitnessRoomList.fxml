@@ -21,7 +21,7 @@
   </rowConstraints>
    <children>
       <ListView fx:id="list" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="2" />
-       <Button fx:id="select" mnemonicParsing="false" onAction="#handleSelect" text="Select" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-       <Button fx:id="back" mnemonicParsing="false" onAction="#handleBackButton" text="Back" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+       <Button fx:id="select" id="select" mnemonicParsing="false" onAction="#handleSelect" text="Select" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+       <Button fx:id="back" id="back" mnemonicParsing="false" onAction="#handleBackButton" text="Back" GridPane.columnIndex="1" GridPane.rowIndex="3" />
    </children>
 </GridPane>
